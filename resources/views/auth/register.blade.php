@@ -42,16 +42,47 @@
         <div class="container-login100" style="background-image: url('{{ $image_bg }}');">
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
                 <span class="login100-form-title p-b-49">
-                    Login
+                    Register
                 </span>
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('registerSubmit', $role) }}">
                     @csrf
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+                        <span class="label-input100">Full Name</span>
+                        <input class="input100" type="text" name="name" placeholder="Type your name" required>
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="email is reauired">
                         <span class="label-input100">Email</span>
                         <input class="input100" type="email" name="email" placeholder="Type your Email" required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
                     @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Contact no is reauired">
+                        <span class="label-input100">Contact Number</span>
+                        <input class="input100" min="999999999" max="10000000000" type="number" name="contact_no"
+                            placeholder="Type your Contact no." required>
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+                    @error('contact_no')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Contact no is reauired">
+                        <span class="label-input100">Address</span>
+                        <input class="input100" type="text" name="address" placeholder="Type your Address" required>
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+                    @error('address')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -62,16 +93,29 @@
                             required>
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
                     </div>
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <span class="label-input100">Password</span>
+                        <input class="input100" type="password" name="password_confirmation"
+                            placeholder="Confirm Password" required>
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    </div>
+                    @error('password_confirmation')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     <div class="container-login100-form-btn mt-3">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
                             <button class="login100-form-btn">
-                                Login
+                                Register
                             </button>
                         </div>
-                    </div>
-                    <div class="container-login100-form-btn mt-3">
-                        Didn't have an account ? <a href="{{ route('register', $role) }}" class="mx-1">Click Here</a>
                     </div>
                 </form>
             </div>

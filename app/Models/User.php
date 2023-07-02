@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -15,6 +16,11 @@ class User extends Authenticatable
     const ROLE_SUPERADMIN = 'superadmin';
     const ROLE_PROPERTY_OWNER = 'property_owner';
     const ROLE_USER = 'user';
+    const ROLE = [
+        self::ROLE_SUPERADMIN,
+        self::ROLE_PROPERTY_OWNER,
+        self::ROLE_USER
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -48,4 +54,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
 }
