@@ -35,6 +35,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     @php
         $image_bg = asset('login_template/images/bg-01.jpg');
     @endphp
