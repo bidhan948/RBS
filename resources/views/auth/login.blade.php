@@ -45,7 +45,7 @@
                 <span class="login100-form-title p-b-49">
                     Login
                 </span>
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('loginSubmit', $role) }}">
                     @csrf
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                         <span class="label-input100">Email</span>

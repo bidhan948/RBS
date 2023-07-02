@@ -16,6 +16,9 @@ class User extends Authenticatable
     const ROLE_SUPERADMIN = 'superadmin';
     const ROLE_PROPERTY_OWNER = 'property_owner';
     const ROLE_USER = 'user';
+    const STATUS_TRUE = true;
+    const STATUS_FALSE = false;
+
     const ROLE = [
         self::ROLE_SUPERADMIN,
         self::ROLE_PROPERTY_OWNER,
@@ -32,7 +35,8 @@ class User extends Authenticatable
         'email',
         'password',
         'address',
-        'role'
+        'role',
+        'status'
     ];
 
     /**
