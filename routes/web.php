@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PropertyController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,4 +28,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
     Route::get('approve-user/{user}', [AuthController::class, 'approveUser'])->name('admin.approve-user');
     Route::get('disapprove-user/{user}', [AuthController::class, 'disapproveUser'])->name('admin.disapprove-user');
+    Route::resource('property',PropertyController::class);
 });

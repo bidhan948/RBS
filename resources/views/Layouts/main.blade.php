@@ -503,7 +503,7 @@
                             <ul class="vertical-nav-menu">
                                 <li class="app-sidebar__heading">Dashboards</li>
                                 <li class="@yield('admin_dashboard')">
-                                    <a href="{{route('admin.dashboard')}}">
+                                    <a href="{{ route('admin.dashboard') }}">
                                         <i class="fa-solid fa-gauge nav-icon"></i>
                                         Dashboard
                                     </a>
@@ -515,8 +515,8 @@
                                         Setting
                                     </a>
                                     <ul>
-                                        <li class="@yield('is_active_room_type')">
-                                            <a href="#">
+                                        <li class="@yield('is_active_property')">
+                                            <a href="{{ route('property.index') }}">
                                                 <i class="metismenu-icon"></i>
                                                 Add Property
                                             </a>
