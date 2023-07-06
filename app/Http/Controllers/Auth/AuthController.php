@@ -76,4 +76,19 @@ class AuthController extends Controller
 
         return redirect('/');
     }
+
+    public function approveUser(User $user): RedirectResponse
+    {
+        abort_if(auth()->user()->role != User::ROLE_SUPERADMIN, 403);
+        $user->update(['status' => User::STATUS_TRUE]);
+        toast("User approved successfully", "success");
+        return redirect()->back();
+    }
+    public function disapproveUser(User $user): RedirectResponse
+    {
+        abort_if(auth()->user()->role != User::ROLE_SUPERADMIN, 403);
+        $user->update(['status' => User::STATUS_FALSE]);
+        toast("User disapproved successfully", "success");
+        return redirect()->back();
+    }
 }

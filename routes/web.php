@@ -25,4 +25,6 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('dashboard', [DashboardController::class, 'dashboardAdmin'])->name('admin.dashboard');
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
+    Route::get('approve-user/{user}', [AuthController::class, 'approveUser'])->name('admin.approve-user');
+    Route::get('disapprove-user/{user}', [AuthController::class, 'disapproveUser'])->name('admin.disapprove-user');
 });

@@ -32,7 +32,12 @@
                                         <td v-text="user.address"></td>
                                         <td v-text="user.status == 1 ? 'ACTIVE' : 'NOT-ACTIVE'"></td>
                                         <td>
-                                            <a href="" class="btn btn-sm btn-success">Approve</a>
+                                            <a :href="APPROVE_PATH +'/'+user.id" v-if="user.status == 0"
+                                                class="btn btn-sm btn-success"><i class="fa-solid fa-thumbs-up"></i>
+                                                Approve</a>
+                                            <a :href="DISAPPROVE_PATH +'/'+user.id" v-if="user.status == 1"
+                                                class="btn btn-sm btn-danger"><i class="fa-solid fa-thumbs-down"></i>
+                                               Disapprove</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -49,6 +54,8 @@
         new Vue({
             el: "#vue_app",
             data: {
+                APPROVE_PATH: @json(url('admin/approve-user/')),
+                DISAPPROVE_PATH: @json(url('admin/disapprove-user/')),
                 users: @json($users)
             },
             methods: {
