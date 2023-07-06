@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
@@ -52,9 +52,17 @@ class AuthController extends Controller
 
         if (Auth::attempt($request->validated())) {
 
+
             $user = User::query()
                 ->where('email', $request->email)
                 ->first();
+
+            if ($role == User::ROLE_PROPERTY_OWNER) {
+                if ($user->status == User::STATUS_FALSE) {
+                    Alert::error('Please Wait For Admin Approval');
+                    return redirect()->back();
+                }
+            }
 
             $request->session()->regenerate();
 

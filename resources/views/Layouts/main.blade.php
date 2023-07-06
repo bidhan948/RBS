@@ -518,7 +518,7 @@
                                         <li class="@yield('is_active_room_type')">
                                             <a href="#">
                                                 <i class="metismenu-icon"></i>
-                                                Room Type
+                                                Add Property
                                             </a>
                                         </li>
                                     </ul>
